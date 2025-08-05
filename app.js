@@ -409,7 +409,7 @@ function calcularDosis(index) {
     const peso = parseFloat(document.getElementById('pesoInput').value);
     const med = window._medications[index];
     const dosis = med.dosis_por_kg ? peso * med.dosis_por_kg : null;
-    const resultado = dosis ? `${dosis.toFixed(2)} mg por dosis` : 'No disponible';
+    const resultado = dosis ? \`\${dosis.toFixed(2)} mg por dosis\` : 'No disponible';
     document.getElementById('resultadoDosis').textContent = resultado;
 }
 
