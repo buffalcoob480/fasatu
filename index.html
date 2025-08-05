@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="es">
+<head>
+    <link href="manifest.webmanifest" rel="manifest"/>
+    <meta content="#0f172a" name="theme-color"/>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Guía Farmacológica y Clínica - Centro de Salud Colonia Azteca</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link href="./style.css" rel="stylesheet"/>
+</head>
+<body class="bg-slate-100 text-slate-800">
+<div class="fixed top-4 right-4 z-50">
+    <button class="px-4 py-2 bg-slate-900 text-white rounded shadow-md hover:bg-slate-700 transition" id="modoAlfredoToggle">
+        Activar Modo Alfredo
+    </button>
+</div>
+
+    <header class="bg-white shadow-md fixed top-0 left-0 right-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-slate-800">Guía Farmacológica</h1>
+            <button class="px-4 py-2 bg-slate-900 text-white rounded hover:bg-slate-700 transition" id="modoAlfredoToggle">Modo Alfredo</button>
+        </div>
+    </header>
+    <main class="main-content pt-24">
+    
+<div class="container mx-auto p-4 sm:p-6 lg:p-8 grid gap-6">
+    <header class="text-center mb-10">
+        <h1 class="text-3xl sm:text-5xl font-bold text-slate-900">Guía Farmacológica y Clínica</h1>
+        <p class="text-lg text-slate-600 mt-2">Centro de Salud Colonia Azteca</p>
+        <p class="text-sm text-slate-500 mt-4">Actualmente con <span class="font-bold text-slate-600" id="med-count">0</span> medicamentos en la base de datos.</p>
+    </header>
+    <section class="controls-container">
+        <div class="search-wrapper">
+            <input aria-label="Buscar medicamento" class="w-full p-4 border border-slate-300 rounded-full shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" id="searchBar" placeholder="Buscar por nombre, familia, uso..." type="text"/>
+        </div>
+        <div class="filter-controls">
+            <div class="dropdown-wrapper">
+                <button class="dropdown-btn" id="families-dropdown-btn">
+                    <span id="families-btn-text">Familias de Medicamentos</span>
+                    <svg class="h-5 w-5" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" fill-rule="evenodd"></path></svg>
+                </button>
+                <div class="dropdown-panel" id="families-dropdown-panel">
+                    <nav aria-label="Filtros por familia" id="familyFilterContainer"></nav>
+                </div>
+            </div>
+            <div class="dropdown-wrapper">
+                <button class="dropdown-btn" id="themes-dropdown-btn">
+                    <span>Temas de Interés</span>
+                    <svg class="h-5 w-5" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" fill-rule="evenodd"></path></svg>
+                </button>
+                <div class="dropdown-panel" id="themes-dropdown-panel">
+                    <nav aria-label="Temas de interés" id="themesFilterContainer"></nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="mt-8" id="view-container">
+        <section id="medication-section">
+            <div class="text-center py-16 text-slate-500" id="loading-indicator"><p>Cargando medicamentos...</p></div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="medication-list"></div>
+            <div class="text-center py-16 text-slate-500 text-xl hidden" id="no-results"><p>No se encontraron medicamentos.</p></div>
+        </section>
+        <section class="hidden" id="themes-section">
+            <article class="theme-content hidden bg-white p-6 sm:p-8 rounded-xl shadow-md prose max-w-none" id="theme-gpc-insulina">
+                <h2>Compendio Clínico sobre Insulinoterapia (Basado en Evidencia)</h2>
+                <h3>Sección 1: Fundamentos Farmacológicos</h3>
+                <p>La insulinoterapia es el pilar en el manejo de la DM1 y una herramienta indispensable en la DM2 avanzada. La comprensión de la farmacología es esencial para emular la secreción fisiológica endógena, minimizando riesgos. Los análogos modernos superan las limitaciones de las insulinas humanas (picos de NPH, inicio lento de la Regular), ofreciendo perfiles más predecibles y seguros.</p>
+                <h4>1.1. Clasificación de las Insulinas</h4>
+                <p>Las insulinas se clasifican por su origen y, clínicamente más importante, por su perfil de acción. Los análogos de insulina son modificaciones de la insulina humana diseñados para optimizar sus propiedades.</p>
+                <ul>
+                    <li><strong>Análogos de Acción Rápida y Ultrarrápida (Prandiales):</strong> Diseñados para controlar la hiperglucemia posprandial. Su absorción es más veloz que la insulina regular.</li>
+                    <li><strong>Análogos de Acción Prolongada y Ultraprolongada (Basales):</strong> Proporcionan una cobertura basal constante y predecible, con un perfil plano que reduce significativamente el riesgo de hipoglucemia nocturna.</li>
+                </ul>
+                <h4>1.2. Principios Farmacocinéticos y Farmacodinámicos</h4>
+                <p>Los parámetros clave que definen el perfil de una insulina son:</p>
+                <ul>
+                    <li><strong>Inicio de acción:</strong> Tiempo hasta que comienza su efecto hipoglucemiante.</li>
+                    <li><strong>Pico de acción:</strong> Momento de máxima actividad. Un pico pronunciado aumenta el riesgo de hipoglucemia.</li>
+                    <li><strong>Duración de la acción:</strong> Período total de efecto clínicamente significativo.</li>
+                </ul>
+                <h3>Sección 2: Objetivos Glucémicos y Monitorización Avanzada</h3>
+                <p>El control glucémico moderno integra la HbA1c con métricas de la Monitorización Continua de Glucosa (MCG), priorizando la calidad del control diario y la minimización de la hipoglucemia.</p>
+                <h4>2.1. Individualización de Objetivos</h4>
+                <ul>
+                    <li><strong>Objetivos Generales (ADA):</strong> HbA1c &lt; 7.0%.</li>
+                    <li><strong>Tiempo en Rango (TIR 70-180 mg/dL):</strong> &gt;70%.</li>
+                    <li><strong>Tiempo Bajo el Rango (TBR &lt;70 mg/dL):</strong> &lt;4%.</li>
+                    <li><strong>Objetivos Menos Estrictos (HbA1c &lt; 8.0-8.5%):</strong> Para pacientes con alto riesgo de hipoglucemia, esperanza de vida limitada o comorbilidades significativas.</li>
+                </ul>
+                <h3>Sección 3: Regímenes Terapéuticos para DM1</h3>
+                <p>El estándar de oro es un régimen basal-bolo intensivo, administrado mediante Inyecciones Diarias Múltiples (IDM) o Infusión Subcutánea Continua de Insulina (ISCI) con una bomba.</p>
+                <ul>
+                    <li><strong>Sistemas de Administración Automatizada de Insulina (AID):</strong> También conocidos como lazo cerrado híbrido (HCL), son ahora el método preferido. Integran una MCG, una bomba y un algoritmo que ajusta automáticamente la infusión basal para maximizar el TIR y minimizar la hipoglucemia.</li>
+                </ul>
+                <h3>Sección 4: Regímenes Terapéuticos para DM2</h3>
+                <p>La insulina se ha reposicionado en el algoritmo de la DM2. Para la mayoría de los pacientes que requieren una terapia inyectable, un <strong>agonista del receptor de GLP-1 (aGLP-1) es el agente de primera línea preferido sobre la insulina</strong>, debido a sus beneficios cardiorrenales y de control de peso con bajo riesgo de hipoglucemia.</p>
+                <h4>Indicaciones para Iniciar Insulina en DM2:</h4>
+                <ul>
+                    <li>Hiperglucemia sintomática severa (poliuria, polidipsia, pérdida de peso).</li>
+                    <li>Niveles de glucosa muy elevados (HbA1c &gt;10% o glucosa &gt;300 mg/dL).</li>
+                    <li>Sospecha de DM1 tipo LADA.</li>
+                </ul>
+                <h3>Sección 5: Algoritmos Prácticos para Inicio y Titulación</h3>
+                <h4>5.1. Inicio de Insulina Basal en DM2</h4>
+                <div class="overflow-x-auto my-6 shadow-sm rounded-lg">
+                    <table class="w-full text-sm text-left">
+                        <thead class="bg-slate-100"><tr><th class="p-3">Paso</th><th class="p-3">Acción</th><th class="p-3">Perla Clínica</th></tr></thead>
+                        <tbody class="divide-y">
+                            <tr><td class="p-3 font-medium">1. Dosis Inicial</td><td class="p-3">Iniciar con 10 UI de un análogo basal o 0.1-0.2 UI/kg.</td><td class="p-3">Al iniciar, reducir o suspender sulfonilureas.</td></tr>
+                            <tr><td class="p-3 font-medium">2. Titulación</td><td class="p-3">Aumentar 2 UI cada 3 días hasta que la glucosa en ayunas esté en meta (80-130 mg/dL).</td><td class="p-3">Proporcionar un algoritmo escrito al paciente para autotitulación.</td></tr>
+                            <tr><td class="p-3 font-medium">3. Ajuste por Hipoglucemia</td><td class="p-3">Si GA &lt; 70 mg/dL, reducir la dosis basal en 10-20%.</td><td class="p-3">Siempre investigar la causa de la hipoglucemia.</td></tr>
+                            <tr><td class="p-3 font-medium">4. Identificar Sobrebasalización</td><td class="p-3">Si la dosis basal &gt;0.5 UI/kg/día y la HbA1c sigue alta, no seguir aumentando.</td><td class="p-3">Considerar añadir insulina prandial o un aGLP-1.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <h3>Sección 6: Manejo en Poblaciones y Escenarios Especiales</h3>
+                <ul>
+                    <li><strong>Paciente Hospitalizado:</strong> El régimen basal-bolo es superior a la escala móvil. El objetivo de glucosa es 140-180 mg/dL para pacientes críticos.</li>
+                    <li><strong>Embarazo:</strong> La insulina es el tratamiento de elección. Se requieren objetivos glucémicos muy estrictos (Ayuno &lt;95, 1h postprandial &lt;140, 2h postprandial &lt;120).</li>
+                    <li><strong>Adultos Mayores:</strong> La prioridad es evitar la hipoglucemia. Se recomiendan objetivos de HbA1c menos estrictos (&lt;8.0-8.5%) y la simplificación de regímenes.</li>
+                    <li><strong>Enfermedad Renal Crónica (ERC):</strong> El aclaramiento de insulina disminuye. Las dosis deben reducirse a medida que la TFG baja.</li>
+                </ul>
+                <div class="bibliografia">
+                    <h4>Bibliografía</h4>
+                    <p>Este compendio se basa en una revisión de las guías de práctica clínica más recientes, incluyendo los Standards of Care de la American Diabetes Association (ADA), guías de la AACE, reportes de consenso ADA/EASD, guías KDIGO para ERC y guías ISPAD para pediatría.</p>
+                </div>
+            </article>
+            </section>
+
+        <details class="mb-6">
+            <summary class="text-xl font-semibold cursor-pointer">Calculadoras Adicionales</summary>
+            <div class="space-y-6 mt-4" id="calculadoras-adicionales">
+                <div class="bg-white p-4 rounded shadow">
+                    <h3 class="text-lg font-bold mb-2">Hidratación en Gastroenteritis Aguda</h3>
+                    <div class="flex items-center space-x-2 flex-wrap">
+                        <label>Peso (kg): <input class="border rounded px-2 py-1 w-24" id="peso-hidratacion" type="number"/></label>
+                        <button class="px-3 py-1 bg-green-600 text-white rounded" data-calculator="hidratacion">Calcular</button>
+                    </div>
+                    <div class="mt-2 text-blue-800 font-semibold" id="resultado-hidratacion"></div>
+                </div>
+                <div class="bg-white p-4 rounded shadow">
+                    <h3 class="text-lg font-bold mb-2">Dosis de Ibuprofeno (10 mg/kg)</h3>
+                     <div class="flex items-center space-x-2 flex-wrap">
+                        <label>Peso (kg): <input class="border rounded px-2 py-1 w-24" id="peso-ibuprofeno" type="number"/></label>
+                        <button class="px-3 py-1 bg-green-600 text-white rounded" data-calculator="ibuprofeno">Calcular</button>
+                    </div>
+                    <div class="mt-2 text-blue-800 font-semibold" id="resultado-ibuprofeno"></div>
+                </div>
+            </div>
+        </details>
+    </div>
+    <footer class="text-center p-4 mt-8 text-sm text-slate-500 border-t">
+        <p>Información de referencia. Consulte siempre a un profesional de la salud.</p>
+    </footer>
+</div>
+</main>
+<div aria-labelledby="modalTitle" aria-modal="true" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50" id="medicationModal" role="dialog"><div class="bg-white rounded-2xl shadow-xl w-full max-w-2xl max-h-[90vh] flex flex-col transform transition-all duration-300 scale-95 opacity-0" id="modal-content-wrapper"></div></div>
+<template id="medication-card-template"><article class="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer flex flex-col overflow-hidden"><img alt="" class="card-img w-full h-32 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x200/fecaca/991b1b?text=Imagen+no+disponible';"/><div class="p-5 flex flex-col flex-grow"><div><h3 class="card-name font-bold text-lg text-slate-900"></h3><p class="card-presentation text-sm text-slate-600"></p></div><div class="mt-4 pt-4 border-t border-slate-200 text-xs flex-grow flex flex-col justify-end"><p class="card-family font-semibold text-blue-600"></p><p class="card-uses text-slate-500 mt-1"></p></div></div></article></template>
+
+<script defer="defer" src="./app.js"></script>
+<script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+      .then(reg => console.log('Service worker registrado ✔️'))
+      .catch(err => console.error('Error al registrar service worker:', err));
+    }
+
+    document.getElementById('modoAlfredoToggle').addEventListener('click', function () {
+        document.body.classList.toggle('dark');
+        document.documentElement.classList.toggle('dark');
+    });
+</script>
+</body>
+</html>
